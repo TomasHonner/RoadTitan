@@ -4,7 +4,7 @@
 	<label for="reservationCode">
 		<g:message code="reservation.code" />
 	</label>
-	<g:textField name="reservationCode" value="${reservationInstance?.reservationCode}"/>
+	<g:textField name="reservationCode" value="${reservationInstance?.reservationCode}" required="required"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: reservationInstance, field: 'reservationName', 'error')} list-group-item ">
@@ -49,12 +49,14 @@
 		<g:message code="reservation.user" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="user" name="user.id" from="${roadtitan.security.User.list()}" optionKey="id" required="" value="${reservationInstance?.user?.id}" class="many-to-one"/>
+	<g:select id="user" name="user.id" from="${roadtitan.security.AppUser.list()}" optionKey="id" required="" value="${reservationInstance?.user?.id}" class="many-to-one"/>
 </div>
 
+<sec:ifAnyGranted roles="ROLE_ADMIN, ROLE_SUPERVISOR">
 <div class="fieldcontain ${hasErrors(bean: reservationInstance, field: 'reservationAproved', 'error')} list-group-item">
 	<label for="reservationAproved">
 		<g:message code="reservation.aproved" />
 	</label>
 	<g:checkBox name="reservationAproved" value="${reservationInstance?.reservationAproved}" />
 </div>
+</sec:ifAnyGranted>

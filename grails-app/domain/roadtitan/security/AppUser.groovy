@@ -32,4 +32,9 @@ class AppUser {
         company column: "company"
         secUser column: "sec_user"
     }
+
+    @Override
+    String toString() {
+        return appUserName
+    }
 }

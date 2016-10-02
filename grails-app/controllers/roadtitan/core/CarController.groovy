@@ -8,11 +8,13 @@ import grails.transaction.Transactional
 @Transactional(readOnly = true)
 class CarController {
 
+    def companyService
+
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Car.list(params), model:[carInstanceCount: Car.count()]
+        respond Car.findAllByCompany(companyService.currentCompany()), model:[carInstanceCount: Car.count()]
     }
 
     def show(Car carInstance) {
@@ -20,7 +22,8 @@ class CarController {
     }
 
     def create() {
-        respond new Car(params)
+        def currentCompanyId = companyService.currentCompany().getId()
+        respond new Company()
     }
 
     @Transactional
@@ -47,6 +50,7 @@ class CarController {
     }
 
     def edit(Car carInstance) {
+        def currentCompanyId = companyService.currentCompany().getId()
         respond carInstance
     }
 

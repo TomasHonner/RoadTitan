@@ -93,10 +93,10 @@ class BootStrap {
                     company: Company.findAllByCompanyId(1)
             ).save(failOnError: true)
 
-            def userRole = SecRole.findByAuthority("ROLE_USER")
+            def supervisorRole = SecRole.findByAuthority("ROLE_SUPERVISOR")
 
-            if (!tomUser.secUser.authorities.contains(userRole)) {
-                SecUserSecRole.create tomUser.secUser, userRole
+            if (!tomUser.secUser.authorities.contains(supervisorRole)) {
+                SecUserSecRole.create tomUser.secUser, supervisorRole
             }
         }
 

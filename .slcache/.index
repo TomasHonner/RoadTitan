@@ -5317,3 +5317,4 @@ n:1768:org/codehaus/groovy/runtime/MethodRankHelper$RankableMethod
 n:6926:org/codehaus/groovy/grails/web/mapping/UrlMappingsHolderFactoryBean
 n:397:org/codehaus/groovy/grails/web/mapping/UrlMappings
 n:2275:org/codehaus/groovy/grails/commons/GrailsApplication$isArtefactOfType$0
+n:2188:org/codehaus/groovy/grails/commons/GrailsApplication$addArtefact$0
